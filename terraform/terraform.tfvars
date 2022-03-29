@@ -1,4 +1,4 @@
-dns_zone_name   = "openshift-yc.ru"
+dns_zone_name   = "openshift-yc.ru."
 cluster_name    = "okd-yc"
 master_count    = 1
 master_cpu      = 4
@@ -6,7 +6,7 @@ master_ram      = 16
 worker_count    = 1
 worker_cpu      = 4
 worker_ram      = 16
-bootstrap_count = 1
+bootstrap_count    = 1
 
 
 labels = {
@@ -22,8 +22,6 @@ image_id = "fd8u9lgdcukfl03sik2n"
 
 type_disk = "network-hdd"
 
-
-#
 subnets = [
   {
     zone           = "ru-central1-a"

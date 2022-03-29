@@ -9,3 +9,4 @@ rm -r ./terraform/.terraform
 rm ./terraform/.terraform.lock.hcl
 rm ./terraform/terraform.tfstate
 rm ./terraform/terraform.tfstate.backup
+rm ./hosts_backup.txt

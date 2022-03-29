@@ -30,7 +30,7 @@ with open('./custom-ignition/bastion.ign') as json_file:
 
 data.update(
     {'passwd': {'users': [{'name': 'core', 'sshAuthorizedKeys': [ssh_key]}]}})
-with open('./custom-ignition/bastion.ign', 'w') as outfile:
+with open('./custom-ignition/bastion.ign', 'w', encoding='utf8') as outfile:
     json.dump(data, outfile)
 print("---Complete---")
 
@@ -58,15 +58,17 @@ with open("./terraform/terraform.tfvars") as file:
 
 for index, item in enumerate(data_tftvars):
     if item.find("dns_zone_name") != -1:
-        data_tftvars[index] = f"""dns_zone_name   = "{dns_zone}.ru"\n"""
+        data_tftvars[index] = f"""dns_zone_name   = "{dns_zone}.ru."\n"""
     if item.find("cluster_name ") != -1:
         data_tftvars[index] = f"""cluster_name    = "{cluster_name}"\n"""
     if item.find("master_count") != -1:
         data_tftvars[index] = f"""master_count    = {master_count}\n"""
     if item.find("worker_count") != -1:
         data_tftvars[index] = f"""worker_count    = {worker_count}\n"""
+    if item.find("bootstrap_count") != -1:
+        data_tftvars[index] = f"""bootstrap_count = 1\n"""
 
-with open("./terraform/terraform.tfvars", 'w') as file:
+with open("./terraform/terraform.tfvars", 'w', encoding='utf8') as file:
     file.writelines(data_tftvars)
 
 with open('./terraform/main.tf') as file:
