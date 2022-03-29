@@ -1,0 +1,1 @@
+{"ignition": {"version": "3.2.0"}, "passwd": {"users": [{"name": "core", "sshAuthorizedKeys": [""]}]}}
