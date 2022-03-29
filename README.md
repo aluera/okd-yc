@@ -1,18 +1,21 @@
 # Deployment of OKD in the Yandex cloud
-Полуавтоматическая установка.
+
+## Полуавтоматическая установка.
+
 <ol>
 <li>Склонировать к себе гит репозиторий</li>
 <pre><code>git clone https://github.com/aluera/okd-yc.git</code></pre>
 <li>Внести свои правки в файл okd_config.py</li>
 <li>Выполнить: <pre><code>python initial.py</code></pre></li>
 <li>Выполнить: <pre><code>python install_okd.py</code></pre>
-<li>
-*`В процессе работы скрипта необходимо включит NAT для всей подсети https://cloud.yandex.ru/docs/vpc/operations/enable-nat`*</li>
-<li>*`Удалить созданный object storage`*</li>
-</li>
+<ol><li>
+В процессе работы скрипта необходимо включит NAT для всей подсети https://cloud.yandex.ru/docs/vpc/operations/enable-nat</li>
+<li>Удалить созданный object storage</li></ol></li>
 </ol>
-____
-Ручная установка:
+
+_________________
+
+## Ручная установка:
 <ol>
 <li>Склонировать к себе гит репозиторий</li>
 <pre><code>git clone https://github.com/aluera/okd-yc.git</code></pre>
