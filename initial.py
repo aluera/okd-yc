@@ -53,21 +53,36 @@ print("---Complete---")
 
 # Modify Terraform
 print("---Modify Terrform scripts---")
-os.system(
-    f"""sed -i '/token     = "/c\    token     = "'"{yc_token}"'"' ./terraform/main.tf""")
-os.system(
-    f"""sed -i '/cloud_id  = "/c\    cloud_id  = "'"{yc_cloud_id}"'"' ./terraform/main.tf""")
-os.system(
-    f"""sed -i '/folder_id = "/c\    folder_id = "'"{yc_folder_id}"'"' ./terraform/main.tf""")
+with open("./terraform/terraform.tfvars") as file:
+    data_tftvars = file.readlines()
 
-os.system(
-    f"""sed -i '/dns_zone_name   = "/c\dns_zone_name   = "'"{dns_zone}.ru."'"' ./terraform/terraform.tfvars""")
-os.system(
-    f"""sed -i '/cluster_name    = "/c\cluster_name    = "'"{cluster_name}"'"' ./terraform/terraform.tfvars""")
-os.system(
-    f"""sed -i '/master_count    = /c\master_count    = '"{master_count}"'' ./terraform/terraform.tfvars""")
-os.system(
-    f"""sed -i '/worker_count    = /c\worker_count    = '"{worker_count}"'' ./terraform/terraform.tfvars""")
+for index, item in enumerate(data_tftvars):
+    if item.find("dns_zone_name") != -1:
+        data_tftvars[index] = f"""dns_zone_name   = "{dns_zone}.ru"\n"""
+    if item.find("cluster_name ") != -1:
+        data_tftvars[index] = f"""cluster_name    = "{cluster_name}"\n"""
+    if item.find("master_count") != -1:
+        data_tftvars[index] = f"""master_count    = {master_count}\n"""
+    if item.find("worker_count") != -1:
+        data_tftvars[index] = f"""worker_count    = {worker_count}\n"""
+
+with open("./terraform/terraform.tfvars", 'w') as file:
+    file.writelines(data_tftvars)
+
+with open('./terraform/main.tf') as file:
+    data_main_tf = file.readlines()
+
+for index, item in enumerate(data_main_tf):
+    if item.find("token") != -1:
+        data_main_tf[index] = f'  token     = "{yc_token}"\n'
+    if item.find("cloud_id") != -1:
+        data_main_tf[index] = f'  cloud_id  = "{yc_cloud_id}"\n'
+    if item.find("folder_id") != -1:
+        if item.find('"') != -1:
+            data_main_tf[index] = f'  folder_id = "{yc_folder_id}"\n'
+
+with open('./terraform/main.tf', 'w', encoding='utf8') as file:
+    file.writelines(data_main_tf)
 print("---Complete---")
 # Download OKD
 print("---Download OKD---")

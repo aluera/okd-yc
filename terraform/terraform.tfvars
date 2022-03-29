@@ -1,4 +1,4 @@
-dns_zone_name   = "openshift-yc.ru."
+dns_zone_name   = "openshift-yc.ru"
 cluster_name    = "okd-yc"
 master_count    = 1
 master_cpu      = 4
@@ -14,6 +14,7 @@ labels = {
   demo       = "false",
   created_by = "okd-yc-upi"
 }
+
 network_name = "okd_network"
 
 #Fedora Core OS 34

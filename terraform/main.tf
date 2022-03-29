@@ -1,7 +1,7 @@
 provider "yandex" {
-    token     = ""
-    cloud_id  = ""
-    folder_id = ""
+  token     = ""
+  cloud_id  = ""
+  folder_id = ""
 }
 
 ### Datasource

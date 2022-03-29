@@ -7,10 +7,10 @@
 <li>Внести свои правки в файл okd_config.py</li>
 <li>Выполнить: <pre><code>python initial.py</code></pre></li>
 <li>Перейти в папку terraform и выполнить: <pre><code>terrafrom apply -auto-approve</code></pre></li></li>
-<li>После развёртывания необходимо добавить ip-адресс балансировщика в /etc/host/ <pre><code>xxx.xxx.xxx.xxx api.cluster_name.dns_zone.ru</code></pre></li>
-<li>Выполнить: <pre><code>sh ./scripts/wait-for-bootstrap.sh</code></pre> </li>
+<li>После развёртывания необходимо добавить ip-адрес балансировщика в /etc/host/ узла, с которого планируете запускать скрипты.<pre><code>xxx.xxx.xxx.xxx api.$cluster_name.$dns_zone.ru</code></pre></li>
+<li>Установить master ноду: <pre><code>sh ./scripts/wait-for-bootstrap.sh</code></pre> </li>
 <li>В файле terraform.tfvars выставить <pre><code>bootstrap_count = 0</code></pre> сохранить файл и выполнить:
 <pre><code>terrafrom apply -auto-approve</code></pre></li>
-<li>Выполнить: <pre><code>sh ./scripts/sign-csr-all.sh</code></pre> </li>
-<li>Выполнить: <pre><code>sh ./scripts/wait-for-install.sh</code></pre> </li>
+<li>Подписать все ожидающие сертификаты: <pre><code>sh ./scripts/sign-csr-all.sh</code></pre> </li>
+<li>Установить worker ноду: <pre><code>sh ./scripts/wait-for-install.sh</code></pre> </li>
 </ol>
