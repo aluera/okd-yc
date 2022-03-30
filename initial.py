@@ -97,6 +97,6 @@ print("---Complete---")
 
 # Init Terraform
 print("---Init Terraform---")
-os.system("""sh ./scripts/init-terraform.sh""")
+os.system("""cd terraform/ && terraform init""")
 print("---Complete---")
 print("Initial Script complete")
