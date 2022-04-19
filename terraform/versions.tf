@@ -1,9 +1,8 @@
 terraform {
-  required_version = ">= 1.0"
   required_providers {
     yandex = {
-      source  = "yandex-cloud/yandex"
-      version = "~> 0.55"
+      source = "terraform-registry.storage.yandexcloud.net/yandex-cloud/yandex"
     }
   }
+  required_version = ">= 0.13"
 }
